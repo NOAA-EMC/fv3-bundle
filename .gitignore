@@ -1,10 +1,8 @@
 # Ignore these files anywhere in the tree
 *DS_Store*
-*.o
-*.a
+*.[aox]
 *.so
 *.mod
-*.x
 *.pyc
 *.v3breakpoints
 *.swp
@@ -13,14 +11,13 @@
 
 # Ignore the contents of these directories
 build*/
-FV3/
 
-# ecmwf libraries
+# ECMWF libraries
 atlas/
 eckit/
 fckit/
 
-# Jedi core repos
+# JEDI core repos
 saber/
 odc/
 odyssey/
@@ -28,7 +25,7 @@ ioda-converters/
 ioda/
 oops/
 ufo/
-shallow-water/
+ewok/
 
 # FMS
 fms/
