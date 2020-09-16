@@ -55,7 +55,7 @@ ecbuild_bundle( PROJECT oops  GIT "https://github.com/jcsda/oops.git"  BRANCH de
 ecbuild_bundle( PROJECT saber GIT "https://github.com/jcsda/saber.git" BRANCH develop UPDATE )
 ecbuild_bundle( PROJECT ioda  GIT "https://github.com/jcsda/ioda.git"  BRANCH develop UPDATE )
 ecbuild_bundle( PROJECT ufo   GIT "https://github.com/jcsda/ufo.git"   BRANCH develop UPDATE )
-ecbuild_bundle( PROJECT ewok  GIT "https://github.com/jcsda/ewok.git"  BRANCH feature/fv3jedi UPDATE )
+ecbuild_bundle( PROJECT ewok  GIT "https://github.com/jcsda/ewok.git"  BRANCH develop UPDATE )
 
 # Options for building with certain models
 # ----------------------------------------
