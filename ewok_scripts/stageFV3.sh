@@ -2,12 +2,10 @@
 
 set -eux
 
-fv3bundle_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." >/dev/null 2>&1 && pwd )"
+cd $JEDI_SRC
 
-cd $fv3bundle_dir
-
-fv3jedi_dir="$fv3bundle_dir/fv3-jedi"
-fv3jedi_r2d2_dir="$fv3bundle_dir/R2D2_fv3jedi"
+fv3jedi_dir="$JEDI_SRC/fv3-jedi"
+fv3jedi_r2d2_dir="$EWOK_TMP/R2D2_fv3jedi"
 
 [[ ! -d $fv3jedi_dir ]] && ( echo "Source area $fv3jedi_dir does not exist, ABORT!"; exit 1)
 
