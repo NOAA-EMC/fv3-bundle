@@ -5,7 +5,7 @@ set -eux
 cd $JEDI_SRC
 
 fv3jedi_dir="$JEDI_SRC/fv3-jedi"
-fv3jedi_r2d2_dir="$EWOK_TMP/R2D2_fv3jedi"
+fv3jedi_r2d2_dir="$EWOK_TMP/R2D2"
 
 [[ ! -d $fv3jedi_dir ]] && ( echo "Source area $fv3jedi_dir does not exist, ABORT!"; exit 1)
 
