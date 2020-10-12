@@ -17,7 +17,9 @@ atlas/
 eckit/
 fckit/
 
+
 # JEDI core repos
+jedicmake/
 saber/
 odc/
 odyssey/
@@ -47,5 +49,4 @@ ropp-ufo/
 
 Testing/
 
-ewok_tmp/
-R2D2_fv3jedi/
+EWOK_TMP/
