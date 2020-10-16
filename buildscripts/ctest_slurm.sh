@@ -20,4 +20,4 @@ module list
 
 cd fv3-jedi
 
-ctest -E fv3_get_ioda_test_data
+ctest -E fv3jedi_test_tier1_get_ioda_test_data
