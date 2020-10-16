@@ -230,7 +230,7 @@ sbatch --wait make_slurm.sh
 # Data get test
 # -------------
 cd fv3-jedi
-ctest -R fv3_get_ioda_test_data
+ctest -R fv3jedi_test_tier1_get_ioda_test_data
 cd ../
 
 # Run ctests
