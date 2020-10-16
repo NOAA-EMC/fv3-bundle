@@ -48,7 +48,7 @@ ecbuild_bundle( PROJECT ropp-ufo GIT "https://github.com/jcsda-internal/ropp-tes
 # External (required) observation operators
 # ------------------------------
 option("BUNDLE_SKIP_CRTM" "Don't build CRTM" "OFF") # Skip crtm build unless user passes -DBUNDLE_SKIP_CRTM=ON
-ecbuild_bundle( PROJECT crtm GIT "https://github.com/jcsda-internal/crtm.git" BRANCH develop UPDATE )
+ecbuild_bundle( PROJECT crtm GIT "https://github.com/jcsda-internal/crtm.git" BRANCH release/crtm_jedi UPDATE )
 
 # Core JEDI repositories
 # ----------------------
