@@ -3,7 +3,7 @@
 set -e
 
 # Usage of this script.
-usage() { echo "Usage: $(basename $0) [-c intel-impi/19.1.0.166|gnu-impi/9.2.0|baselibs/intel-impi/19.1.0.166] [-b debug|relwithdebinfo|release|bit|production] [-m fv3|geos|ufs] [-p DOUBLE|SINGLE] [-n 1..12] [-t ON|OFF] [-q debug|advda] [-x] [-v] [-h]" 1>&2; exit 1; }
+usage() { echo "Usage: $(basename $0) [-c intel-impi/19.1.0.166|gnu-impi/9.2.0|baselibs/intel-impi/19.1.2.254] [-b debug|relwithdebinfo|release|bit|production] [-m fv3|geos|ufs] [-p DOUBLE|SINGLE] [-n 1..12] [-t ON|OFF] [-q debug|advda] [-x] [-v] [-h]" 1>&2; exit 1; }
 
 # Set input argument defaults.
 compiler="intel-impi/19.1.0.166"
@@ -32,7 +32,7 @@ while getopts 'v:t:xhc:q:b:m:p:n:' OPTION; do
         compiler="$OPTARG"
         [[ "$compiler" == "gnu-impi/9.2.0" || \
            "$compiler" == "intel-impi/19.1.0.166" || \
-           "$compiler" == "baselibs/intel-impi/19.1.0.166" ]] || usage
+           "$compiler" == "baselibs/intel-impi/19.1.2.254" ]] || usage
         ;;
     m)
         model="$OPTARG"
@@ -213,7 +213,7 @@ sed -i "s,BUILDDIR,$FV3JEDI_BUILD,g" $file
 # Optional obs operators
 # ----------------------
 OBSOPS=""
-#OBSOPS="-DBUNDLE_SKIP_GEOS-AERO=OFF -DBUNDLE_SKIP_ROPP-UFO=OFF" 
+#OBSOPS="-DBUNDLE_SKIP_GEOS-AERO=OFF -DBUNDLE_SKIP_ROPP-UFO=OFF"
 
 # Build
 # -----
