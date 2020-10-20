@@ -8,6 +8,7 @@
 *.swp
 *.sublime-workspace
 *~
+git_branches_as_of_*
 
 # Ignore the contents of these directories
 build*/
