@@ -1,10 +1,8 @@
 # Ignore these files anywhere in the tree
 *DS_Store*
-*.o
-*.a
+*.[aox]
 *.so
 *.mod
-*.x
 *.pyc
 *.v3breakpoints
 *.swp
@@ -14,14 +12,14 @@ git_branches_as_of_*
 
 # Ignore the contents of these directories
 build*/
-FV3/
 
-# ecmwf libraries
+# ECMWF libraries
 atlas/
 eckit/
 fckit/
 
-# Jedi core repos
+
+# JEDI core repos
 jedicmake/
 saber/
 odc/
@@ -30,7 +28,7 @@ ioda-converters/
 ioda/
 oops/
 ufo/
-shallow-water/
+ewok/
 
 # FMS
 fms/
@@ -51,3 +49,5 @@ geos-aero/
 ropp-ufo/
 
 Testing/
+
+EWOK_TMP/
