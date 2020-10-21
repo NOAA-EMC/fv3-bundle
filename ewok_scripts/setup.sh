@@ -7,7 +7,7 @@ clearall=${2:-"NO"}
 
 export JEDI_SRC=${bundle_dir}
 export JEDI_BIN=${bundle_dir}/build/bin
-export EWOK_TMP=${bundle_dir}/EWOK_TMP
+export EWOK_TMP=${bundle_dir}/ewok_tmp
 
 if [[ $clearall =~ [yYtY] ]]; then
 
