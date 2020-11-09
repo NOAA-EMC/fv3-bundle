@@ -123,7 +123,6 @@ case "$model" in
        # Dyn core precision
        read -p "Enter the dynamical core precision, DOUBLE/SINGLE (should match preinstalled models): [$FV3_PRECISION_DEFAULT] " FV3_PRECISION
        FV3_PRECISION=${FV3_PRECISION:-$FV3_PRECISION_DEFAULT}
-       MODEL="$MODEL -DBUNDLE_SKIP_ECKIT=OFF"
        ;;
     "ufs" )
        MODEL="$MODEL -DFV3_FORECAST_MODEL=UFS"
@@ -210,14 +209,26 @@ sed -i "s,ACCOUNT,$account,g" $file
 sed -i "s,QUEUE,$queue,g" $file
 sed -i "s,BUILDDIR,$FV3JEDI_BUILD,g" $file
 
+# Additional arguments
+# --------------------
+EXTRAS=""
+OBSOPS=""
+
+
+# Build ECKIT
+# -----------
+if [ "$compiler" == "baselibs/intel-impi/19.1.2.254" ]; then
+  EXTRAS="$EXTRAS -DBUNDLE_SKIP_ECKIT=OFF"
+fi
+
 # Optional obs operators
 # ----------------------
-OBSOPS=""
 #OBSOPS="-DBUNDLE_SKIP_GEOS-AERO=OFF -DBUNDLE_SKIP_ROPP-UFO=OFF"
 
 # Build
 # -----
-ecbuild --build=$build -DMPIEXEC=$MPIEXEC $MODEL $OBSOPS $FV3JEDI_SRC
+setenv FV3JEDI_TEST_TIER 2
+ecbuild --build=$build -DMPIEXEC=$MPIEXEC $MODEL $OBSOPS -DSKIP_LARGE_TESTS=OFF $FV3JEDI_SRC
 
 # Update the repos
 # ----------------
@@ -230,7 +241,7 @@ sbatch --wait make_slurm.sh
 # Data get test
 # -------------
 cd fv3-jedi
-ctest -R fv3jedi_test_tier1_get_ioda_test_data
+ctest -R fv3jedi_test_tier1_get_test_data_
 cd ../
 
 # Run ctests
