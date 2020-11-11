@@ -227,7 +227,7 @@ fi
 
 # Build
 # -----
-setenv FV3JEDI_TEST_TIER 2
+FV3JEDI_TEST_TIER=2
 ecbuild --build=$build -DMPIEXEC=$MPIEXEC $MODEL $OBSOPS -DSKIP_LARGE_TESTS=OFF $FV3JEDI_SRC
 
 # Update the repos
