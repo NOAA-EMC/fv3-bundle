@@ -48,6 +48,13 @@ gsw/
 geos-aero/
 ropp-ufo/
 
+# Test data
+fv3-jedi-data/
+test-data-release/
+ioda-data/
+ufo-data/
+
+
 Testing/
 
 EWOK_TMP/
