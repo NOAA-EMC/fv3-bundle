@@ -9,7 +9,9 @@
 
 cmake_minimum_required( VERSION 3.12 FATAL_ERROR )
 
-project( fv3-bundle LANGUAGES C CXX Fortran )
+find_package( ecbuild 3.5 REQUIRED HINTS ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/../ecbuild)
+
+project( fv3-bundle VERSION 1.1.0 LANGUAGES C CXX Fortran )
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
@@ -19,7 +21,7 @@ include( ecbuild_bundle )
 set( ECBUILD_DEFAULT_BUILD_TYPE Release )
 
 # Enable MPI
-set( ENABLE_MPI ON CACHE BOOL "Compile with MPI" )
+set( ENABLE_MPI ON CACHE BOOL "Compile with MPI")
 
 # Initialize
 ecbuild_bundle_initialize()
@@ -29,12 +31,12 @@ include( jedicmake/cmake/Functions/git_functions.cmake  )
 # ECMWF libs
 # ----------
 option("BUNDLE_SKIP_ECKIT" "Don't build eckit" "ON" ) # Skip eckit build unless user passes -DBUNDLE_SKIP_ECKIT=OFF
-option("BUNDLE_SKIP_FCKIT" "Don't build fckit" "OFF") # Build fckit unless user passes -DBUNDLE_SKIP_FCKIT=ON
-option("BUNDLE_SKIP_ATLAS" "Don't build atlas" "OFF") # Build atlas unless user passes -DBUNDLE_SKIP_ATLAS=ON
+option("BUNDLE_SKIP_FCKIT" "Don't build fckit" "ON") # Build fckit unless user passes -DBUNDLE_SKIP_FCKIT=OFF
+option("BUNDLE_SKIP_ATLAS" "Don't build atlas" "ON") # Build atlas unless user passes -DBUNDLE_SKIP_ATLAS=OFF
 
-ecbuild_bundle( PROJECT eckit GIT "https://github.com/jcsda-internal/eckit.git" BRANCH release-stable UPDATE )
-ecbuild_bundle( PROJECT fckit GIT "https://github.com/jcsda-internal/fckit.git" BRANCH release-stable UPDATE )
-ecbuild_bundle( PROJECT atlas GIT "https://github.com/jcsda-internal/atlas.git" BRANCH release-stable UPDATE )
+ecbuild_bundle( PROJECT eckit GIT "https://github.com/ecmwf/eckit.git" TAG 1.16.0 )
+ecbuild_bundle( PROJECT fckit GIT "https://github.com/ecmwf/fckit.git" TAG 0.9.2 )
+ecbuild_bundle( PROJECT atlas GIT "https://github.com/ecmwf/atlas.git" TAG 0.24.1 )
 
 # External (optional) observation operators
 # ------------------------------
@@ -71,7 +73,7 @@ ecbuild_info("Building with FV3-based model: ${FV3_FORECAST_MODEL}")
 # -------------------------------------------------------
 if (FV3_FORECAST_MODEL MATCHES "FV3CORE")
   option("BUNDLE_SKIP_FMS" "Don't build FMS" "OFF")
-  ecbuild_bundle( PROJECT fms GIT "https://github.com/jcsda-internal/FMS.git" BRANCH release-stable-ecbuild UPDATE )
+  ecbuild_bundle( PROJECT fms GIT "https://github.com/jcsda-internal/FMS.git" BRANCH release-stable UPDATE )
   ecbuild_bundle( PROJECT fv3 GIT "https://github.com/jcsda-internal/GFDL_atmos_cubed_sphere.git" BRANCH release-stable UPDATE )
 endif()
 
