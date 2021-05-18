@@ -3,10 +3,10 @@
 set -e
 
 # Usage of this script.
-usage() { echo "Usage: $(basename $0) [-c intel-impi/19.1.0.166|gnu-impi/9.2.0|baselibs/intel-impi/19.1.2.254] [-b debug|relwithdebinfo|release|bit|production] [-m fv3|geos|ufs] [-p DOUBLE|SINGLE] [-n 1..12] [-t ON|OFF] [-q debug|advda] [-x] [-v] [-h]" 1>&2; exit 1; }
+usage() { echo "Usage: $(basename $0) [-c intel-impi|gnu-impi|baselibs/intel-impi] [-b debug|relwithdebinfo|release|bit|production] [-m fv3|geos|ufs] [-p DOUBLE|SINGLE] [-n 1..12] [-t ON|OFF] [-q debug|advda] [-x] [-v] [-h]" 1>&2; exit 1; }
 
 # Set input argument defaults.
-compiler="intel-impi/19.1.0.166"
+compiler="intel-impi"
 build="debug"
 clean="NO"
 model="fv3"
@@ -30,9 +30,9 @@ while getopts 'v:t:xhc:q:b:m:p:n:' OPTION; do
         ;;
     c)
         compiler="$OPTARG"
-        [[ "$compiler" == "gnu-impi/9.2.0" || \
-           "$compiler" == "intel-impi/19.1.0.166" || \
-           "$compiler" == "baselibs/intel-impi/19.1.2.254" ]] || usage
+        [[ "$compiler" == "gnu-impi" || \
+           "$compiler" == "intel-impi" || \
+           "$compiler" == "baselibs/intel-impi" ]] || usage
         ;;
     m)
         model="$OPTARG"
