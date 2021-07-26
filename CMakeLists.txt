@@ -54,11 +54,10 @@ option("BUNDLE_SKIP_CRTM" "Don't build CRTM" "OFF") # Skip crtm build unless use
 ecbuild_bundle( PROJECT crtm GIT "https://github.com/jcsda-internal/crtm.git" BRANCH release/crtm_jedi UPDATE )
 
 # Core JEDI repositories
-# ----------------------
-ecbuild_bundle( PROJECT oops  GIT "https://github.com/jcsda-internal/oops.git"  BRANCH develop UPDATE )
-ecbuild_bundle( PROJECT saber GIT "https://github.com/jcsda-internal/saber.git" BRANCH develop UPDATE )
-ecbuild_bundle( PROJECT ioda  GIT "https://github.com/jcsda-internal/ioda.git"  BRANCH develop UPDATE )
-ecbuild_bundle( PROJECT ufo   GIT "https://github.com/jcsda-internal/ufo.git"   BRANCH develop UPDATE )
+ecbuild_bundle( PROJECT oops  GIT "https://github.com/noaa-emc/oops.git"  BRANCH develop UPDATE )
+ecbuild_bundle( PROJECT saber GIT "https://github.com/noaa-emc/saber.git" BRANCH develop UPDATE )
+ecbuild_bundle( PROJECT ioda  GIT "https://github.com/noaa-emc/ioda.git"  BRANCH develop UPDATE )
+ecbuild_bundle( PROJECT ufo   GIT "https://github.com/noaa-emc/ufo.git"   BRANCH develop UPDATE )
 
 # Options for building with certain models
 # ----------------------------------------
@@ -73,18 +72,15 @@ ecbuild_info("Building with FV3-based model: ${FV3_FORECAST_MODEL}")
 # -------------------------------------------------------
 if (FV3_FORECAST_MODEL MATCHES "FV3CORE")
   option("BUNDLE_SKIP_FMS" "Don't build FMS" "OFF")
+# FMS and FV3 dynamical core
   ecbuild_bundle( PROJECT fms GIT "https://github.com/jcsda-internal/FMS.git" BRANCH release-stable UPDATE )
   ecbuild_bundle( PROJECT fv3 GIT "https://github.com/jcsda-internal/GFDL_atmos_cubed_sphere.git" BRANCH release-stable UPDATE )
 endif()
 
-# fv3-jedi linear model
-# ---------------------
-ecbuild_bundle( PROJECT fv3-jedi-lm GIT "https://github.com/jcsda-internal/fv3-jedi-linearmodel.git" BRANCH feature/ufs UPDATE )
-
 # fv3-jedi and associated repositories
-# ------------------------------------
-ecbuild_bundle( PROJECT femps    GIT "https://github.com/jcsda-internal/femps.git"    BRANCH develop UPDATE )
-ecbuild_bundle( PROJECT fv3-jedi GIT "https://github.com/jcsda-internal/fv3-jedi.git" BRANCH feature/ufs UPDATE )
+ecbuild_bundle( PROJECT femps       GIT "https://github.com/jcsda/femps.git"                BRANCH develop UPDATE )
+ecbuild_bundle( PROJECT fv3-jedi-lm GIT "https://github.com/noaa-emc/fv3-jedi-linearmodel.git" BRANCH feature/ufs UPDATE )
+ecbuild_bundle( PROJECT fv3-jedi    GIT "https://github.com/noaa-emc/fv3-jedi.git"          BRANCH feature/ufs UPDATE )
 
 # ioda, ufo, and fv3-jedi test data
 #---------------------------------
